@@ -24,12 +24,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        editTextNumber = findViewById(R.id.editTextNumber);
+        button = findViewById(R.id.button);
+    }
+
+    public void clicked(View view) {
+        String num_1 = editTextNumber.getText().toString();
+        int num = Integer.parseInt(num_1);
+        if (num % 7 != 0) {
+            button.setText("the number " + num + " is divided  by the number 7 : ");
+        } else {
+            button.setText("BOOM!");
+        }
+
     }
 }
